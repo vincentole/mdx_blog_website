@@ -21,7 +21,7 @@ export default function ArticleCard({
 
     return (
         <>
-            <div className='max-w-2xl px-8 py-4 mx-auto bg-white rounded shadow-md dark:bg-gray-800'>
+            <div className='px-8 py-4 rounded bg-primary'>
                 <div className='flex items-center justify-between'>
                     <span className='text-sm font-light text-gray-600 dark:text-gray-400'>
                         {new Date(date).toLocaleDateString('en-us', dateOptions)}

@@ -1,3 +1,5 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 module.exports = {
     content: ['./src/**/*.{js,ts,jsx,tsx}'],
     darkMode: 'class',
@@ -9,7 +11,11 @@ module.exports = {
             xl: '1280px',
             '2xl': '1536px',
         },
-        extend: {},
+        extend: {
+            fontFamily: {
+                sans: ['Roboto', ...fontFamily.sans],
+            },
+        },
     },
     plugins: [require('@tailwindcss/typography')],
 };

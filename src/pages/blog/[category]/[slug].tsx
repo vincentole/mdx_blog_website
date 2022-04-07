@@ -3,14 +3,15 @@ import { GetStaticPropsContext } from 'next';
 import { getMDXComponent } from 'mdx-bundler/client';
 import Layout from '#/src/components/Layout/Layout';
 import { NumberOfPosts } from '#/src/types/types';
-import { Frontmatter, getBlogData } from '#/src/utils/getBlogData';
+import { FrontmatterBlog, getBlogData } from '#/src/utils/getBlogData';
 import { NumberOfPostsContext } from '#/src/store/NumberOfPostsContext';
 import { categoryToSlug } from '#/src/utils/transformCategory';
 import ArticleHeader from '#/src/components/shared/ArticleHeader';
+import Prose from '#/src/components/shared/Prose';
 
 interface PostProps {
     numberOfPosts: NumberOfPosts;
-    post: { code: string; frontmatter: Frontmatter };
+    post: { code: string; frontmatter: FrontmatterBlog };
 }
 
 export default function Post({ numberOfPosts, post }: PostProps) {
@@ -19,15 +20,15 @@ export default function Post({ numberOfPosts, post }: PostProps) {
     return (
         <NumberOfPostsContext.Provider value={numberOfPosts}>
             <Layout noSidebar>
-                <article className=''>
+                <article className='w-full article'>
                     <ArticleHeader
                         title={post.frontmatter.title}
                         date={post.frontmatter.date}
                         category={post.frontmatter.category}
                     />
-                    <div className='prose mx-auto'>
+                    <Prose>
                         <MDXContent />
-                    </div>
+                    </Prose>
                 </article>
             </Layout>
         </NumberOfPostsContext.Provider>
@@ -35,7 +36,7 @@ export default function Post({ numberOfPosts, post }: PostProps) {
 }
 
 export async function getStaticPaths() {
-    const { posts } = await getBlogData();
+    const { posts } = await getBlogData('blog');
 
     const paths = posts.reduce((paths, post) => {
         const { category, slug } = post.frontmatter;
@@ -53,7 +54,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-    const { numberOfPosts, posts } = await getBlogData();
+    const { numberOfPosts, posts } = await getBlogData('blog');
 
     if (!context.params || !context.params.slug || Array.isArray(context.params.slug)) {
         return {

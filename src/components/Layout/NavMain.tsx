@@ -44,159 +44,160 @@ export default function MainNav({ mainMenuController }: MainNavProps) {
 
     return (
         <Navbar
-            className={`w-screen pr-4 lg:pr-0 lg:w-64 text-gray-800 text-sm ${
+            className={`absolute lg:static h-full lg:h-auto bg-white z-10 w-full overflow-auto pr-4 lg:pr-0 lg:w-64 bg-primary text-sm ${
                 mainMenuController.isOpen ? 'block' : 'hidden'
             } lg:block`}
         >
             <NavbarSection label='About Me'>
-                <NavbarItem leftIcon={<WhoAmI className='text-gray-500 text-lg' />}>
+                <NavbarItem
+                    link='/who-am-i'
+                    leftIcon={<WhoAmI className='text-secondary text-lg' />}
+                >
                     Who am I
                 </NavbarItem>
-                <NavbarItem leftIcon={<Portfolio className='text-gray-500 text-lg' />}>
+                <NavbarItem
+                    link='/portfolio'
+                    leftIcon={<Portfolio className='text-secondary text-lg' />}
+                >
                     Portfolio
                 </NavbarItem>
-                <NavbarItem leftIcon={<Contact className='text-gray-500 text-lg' />}>
+                <NavbarItem
+                    link='/contact'
+                    leftIcon={<Contact className='text-secondary text-lg' />}
+                >
                     Contact
                 </NavbarItem>
             </NavbarSection>
             <NavbarSeparator />
             <NavbarSection label='Blog' displayLabel>
-                <Link href='/blog/devblog'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<DevBlog className='text-lg' />}
-                            rightIcon={<CounterChip label={String(numberOfPosts.DevBlog)} />}
-                        >
-                            DevBlog
-                        </NavbarItem>
-                    </a>
-                </Link>
-                <Link href='/blog/personal-path'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<PersonalPath className='text-lg' />}
-                            rightIcon={
-                                <CounterChip label={String(numberOfPosts['Personal Path'])} />
-                            }
-                        >
-                            Personal Path
-                        </NavbarItem>
-                    </a>
-                </Link>
-                <Link href='/blog/software-architecture'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<Architecture className='text-lg' />}
-                            rightIcon={
-                                <CounterChip
-                                    label={String(numberOfPosts['Software Architecture'])}
-                                />
-                            }
-                        >
-                            Software Architecture
-                        </NavbarItem>
-                    </a>
-                </Link>
-                <Link href='/blog/data-structures'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<Datastructures className='text-lg' />}
-                            rightIcon={
-                                <CounterChip label={String(numberOfPosts['Data Structures'])} />
-                            }
-                        >
-                            Data Structures
-                        </NavbarItem>
-                    </a>
-                </Link>
-                <Link href='/blog/algorithms'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<Algorithms className='text-lg' />}
-                            rightIcon={<CounterChip label={String(numberOfPosts.Algorithms)} />}
-                        >
-                            Algorithms
-                        </NavbarItem>
-                    </a>
-                </Link>
-                <Link href='/blog/reactjs'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<ReactJs className='text-lg' />}
-                            rightIcon={<CounterChip label={String(numberOfPosts['React.js'])} />}
-                        >
-                            React.js
-                        </NavbarItem>
-                    </a>
-                </Link>
-                <Link href='/blog/nextjs'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<NextJs className='text-lg' />}
-                            rightIcon={<CounterChip label={String(numberOfPosts['Next.js'])} />}
-                        >
-                            Next.js
-                        </NavbarItem>
-                    </a>
-                </Link>
-                <Link href='/blog/typescript'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<TypeScript className='text-lg' />}
-                            rightIcon={<CounterChip label={String(numberOfPosts.TypeScript)} />}
-                        >
-                            TypeScript
-                        </NavbarItem>
-                    </a>
-                </Link>
-                <Link href='/blog/tailwindcss'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<TailwindCSS className='text-lg' />}
-                            rightIcon={<CounterChip label={String(numberOfPosts.TailwindCSS)} />}
-                        >
-                            TailwindCSS
-                        </NavbarItem>
-                    </a>
-                </Link>
-                <Link href='/blog/other'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<Other className='text-lg' />}
-                            rightIcon={<CounterChip label={String(numberOfPosts.Other)} />}
-                        >
-                            Other
-                        </NavbarItem>
-                    </a>
-                </Link>
+                <NavbarItem
+                    link='/blog/devblog'
+                    leftIcon={<DevBlog className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts.DevBlog)} />}
+                >
+                    DevBlog
+                </NavbarItem>
+
+                <NavbarItem
+                    link='/blog/personal-path'
+                    leftIcon={<PersonalPath className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts['Personal Path'])} />}
+                >
+                    Personal Path
+                </NavbarItem>
+
+                <NavbarItem
+                    link='/blog/software-architecture'
+                    leftIcon={<Architecture className='text-lg' />}
+                    rightIcon={
+                        <CounterChip label={String(numberOfPosts['Software Architecture'])} />
+                    }
+                >
+                    Software Architecture
+                </NavbarItem>
+
+                <NavbarItem
+                    link='/blog/data-structures'
+                    leftIcon={<Datastructures className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts['Data Structures'])} />}
+                >
+                    Data Structures
+                </NavbarItem>
+
+                <NavbarItem
+                    link='/blog/algorithms'
+                    leftIcon={<Algorithms className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts.Algorithms)} />}
+                >
+                    Algorithms
+                </NavbarItem>
+
+                <NavbarItem
+                    link='/blog/reactjs'
+                    leftIcon={<ReactJs className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts['React.js'])} />}
+                >
+                    React.js
+                </NavbarItem>
+
+                <NavbarItem
+                    link='/blog/nextjs'
+                    leftIcon={<NextJs className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts['Next.js'])} />}
+                >
+                    Next.js
+                </NavbarItem>
+
+                <NavbarItem
+                    link='/blog/typescript'
+                    leftIcon={<TypeScript className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts.TypeScript)} />}
+                >
+                    TypeScript
+                </NavbarItem>
+
+                <NavbarItem
+                    link='/blog/tailwindcss'
+                    leftIcon={<TailwindCSS className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts.TailwindCSS)} />}
+                >
+                    TailwindCSS
+                </NavbarItem>
+
+                <NavbarItem
+                    link='/blog/other'
+                    leftIcon={<Other className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts.Other)} />}
+                >
+                    Other
+                </NavbarItem>
             </NavbarSection>
             <NavbarSection label='Resources' displayLabel>
-                <NavbarItem leftIcon={<Frameworks className='text-lg' />}>
+                <NavbarItem
+                    link='/resources/libs-and-frameworks'
+                    leftIcon={<Frameworks className='text-lg' />}
+                >
                     Libs and Frameworks
                 </NavbarItem>
-                <NavbarItem leftIcon={<Tools className='text-lg' />}>Tools</NavbarItem>
-                <NavbarItem leftIcon={<Practice className='text-lg' />}>Practice</NavbarItem>
+
+                <NavbarItem link='/resources/tools' leftIcon={<Tools className='text-lg' />}>
+                    Tools
+                </NavbarItem>
+
+                <NavbarItem link='/resources/practice' leftIcon={<Practice className='text-lg' />}>
+                    Practice
+                </NavbarItem>
             </NavbarSection>
             <NavbarSection label='Roadmap' displayLabel>
-                <NavbarItem leftIcon={<Roadmap className='text-lg' />}>Roadmap</NavbarItem>
+                <NavbarItem link='/roadmap/roadmap' leftIcon={<Roadmap className='text-lg' />}>
+                    Roadmap
+                </NavbarItem>
             </NavbarSection>
             <NavbarSection label='Snippets' displayLabel>
-                <Link href='/blog/snippets'>
-                    <a>
-                        <NavbarItem
-                            leftIcon={<Other className='text-lg' />}
-                            rightIcon={<CounterChip label={String(numberOfPosts.Other)} />}
-                        >
-                            Snippets
-                        </NavbarItem>
-                    </a>
-                </Link>
+                <NavbarItem
+                    link='/blog/snippets'
+                    leftIcon={<Other className='text-lg' />}
+                    rightIcon={<CounterChip label={String(numberOfPosts.Other)} />}
+                >
+                    Snippets
+                </NavbarItem>
             </NavbarSection>
             <NavbarSection label='Stack' displayLabel>
-                <NavbarItem leftIcon={<Programming className='text-lg' />}>Programming</NavbarItem>
-                <NavbarItem leftIcon={<DeskSetup className='text-lg' />}>Desk Setup</NavbarItem>
-                <NavbarItem leftIcon={<Software className='text-lg' />}>Software</NavbarItem>
-                <NavbarItem leftIcon={<Books className='text-lg' />}>Books</NavbarItem>
+                <NavbarItem
+                    link='/stack/programming'
+                    leftIcon={<Programming className='text-lg' />}
+                >
+                    Programming
+                </NavbarItem>
+                <NavbarItem link='/stack/desk-setup' leftIcon={<DeskSetup className='text-lg' />}>
+                    Desk Setup
+                </NavbarItem>
+                <NavbarItem link='/stack/software' leftIcon={<Software className='text-lg' />}>
+                    Software
+                </NavbarItem>
+                <NavbarItem link='/stack/books' leftIcon={<Books className='text-lg' />}>
+                    Books
+                </NavbarItem>
             </NavbarSection>
         </Navbar>
     );

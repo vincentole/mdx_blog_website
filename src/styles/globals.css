@@ -15,4 +15,45 @@
     .btnFilled {
         @apply bg-gray-500 hover:bg-gray-600 text-white;
     }
+    .article {
+        @apply bg-primary rounded px-8 py-10;
+    }
+}
+
+@layer utilities {
+    .bg-primary {
+        @apply bg-white dark:bg-zinc-800;
+    }
+
+    .bg-secondary {
+        @apply bg-zinc-100 dark:bg-zinc-900;
+    }
+
+    .bg-text-color-primary {
+        @apply bg-blue-400 text-white dark:bg-blue-500 dark:text-zinc-100;
+    }
+
+    .text-primary {
+        @apply text-zinc-700 dark:text-zinc-100;
+    }
+
+    .text-secondary {
+        @apply text-zinc-500;
+    }
+
+    .text-bright {
+        @apply text-zinc-100;
+    }
+
+    .hover-text-primary {
+        @apply hover:text-blue-400 dark:hover:text-blue-500;
+    }
+
+    .hover-bg-primary {
+        @apply hover:bg-zinc-200 dark:hover:bg-zinc-600;
+    }
+
+    .border-primary {
+        @apply border-zinc-300 dark:border-zinc-600;
+    }
 }

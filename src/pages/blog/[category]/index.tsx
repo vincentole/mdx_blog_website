@@ -1,14 +1,14 @@
 import { GetStaticPropsContext } from 'next';
-import { Frontmatter, getBlogData } from '#/src/utils/getBlogData';
+import { FrontmatterBlog, getBlogData } from '#/src/utils/getBlogData';
 import { NumberOfPostsContext } from '#/src/store/NumberOfPostsContext';
 import { NumberOfPosts } from '#/src/types/types';
 import { categorySlugToCategory, categoryToSlug } from '#/src/utils/transformCategory';
-import { CategoryPage } from '#/src/components/CategoryPage/CategoryPage';
+import { CategoryPage } from '#/src/components/Pages/CategoryPage/CategoryPage';
 import { categories } from '#/src/settings/settings';
 
 interface PostProps {
     numberOfPosts: NumberOfPosts;
-    frontmatterSorted: Frontmatter[];
+    frontmatterSorted: FrontmatterBlog[];
     category: string;
 }
 
@@ -37,7 +37,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-    const { numberOfPosts, posts } = await getBlogData();
+    const { numberOfPosts, posts } = await getBlogData('blog');
 
     if (!context.params || !context.params.category || Array.isArray(context.params.category)) {
         return {

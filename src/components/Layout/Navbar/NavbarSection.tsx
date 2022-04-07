@@ -16,8 +16,8 @@ export default function NavbarSection({
     const Element = displayLabelAs || 'h4';
 
     return (
-        <ul role='menu' className={`py-2 pl-6 pr-1 first:pt-6 ${className}`}>
-            <Element className={`pl-2 text-gray-500 text-sm py-1 ${!displayLabel && 'sr-only'}`}>
+        <ul role='menu' className={`py-2 pl-6 pr-1 first:pt-6 last:pb-6 ${className}`}>
+            <Element className={`pl-2 text-secondary text-sm py-1 ${!displayLabel && 'sr-only'}`}>
                 {label}
             </Element>
             {children}

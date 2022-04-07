@@ -4,6 +4,7 @@ import Logo from '#/src/components/shared/Logo';
 import Header from '#/src/components/Layout/Header';
 import NavMain from '#/src/components/Layout/NavMain';
 import SidebarToc from '#/src/components/Layout/SidebarToc';
+import Footer from '#/src/components/Layout/Footer';
 
 export interface MainMenuController {
     isOpen: boolean;
@@ -33,7 +34,7 @@ export default function Layout({ children, noSidebar }: LayoutProps) {
             }
             navbar={<NavMain mainMenuController={mainMenuController} />}
             aside={noSidebar ? undefined : <SidebarToc />}
-            footer={<footer>Footer</footer>}
+            footer={<Footer />}
         >
             {children}
         </AppShell>

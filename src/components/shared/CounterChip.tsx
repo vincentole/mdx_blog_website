@@ -4,7 +4,7 @@ interface CounterChipProps {
 
 export default function CounterChip({ label }: CounterChipProps) {
     return (
-        <span className='w-5 h-5 rounded-full flex items-center justify-center bg-blue-400 text-white font-bold text-xs'>
+        <span className='w-5 h-5 rounded-full flex items-center justify-center bg-text-color-primary font-bold text-xs'>
             {label}
         </span>
     );

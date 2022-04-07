@@ -8,7 +8,7 @@ export default function Navbar({ children, className = '' }: NavbarProps) {
             id='main-menu'
             role='navigation'
             aria-label='Main menu'
-            className={`h-full border-r border-gray-300 ${className}`}
+            className={`rounded pointer-events-auto ${className}`}
         >
             {children}
         </nav>

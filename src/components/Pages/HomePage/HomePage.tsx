@@ -1,18 +1,17 @@
 import Head from 'next/head';
 import Layout from '#/src/components/Layout/Layout';
-import { Frontmatter } from '#/src/utils/getBlogData';
+import { FrontmatterBlog } from '#/src/utils/getBlogData';
 import BlogPostList from '#/src/components/shared/BlogPostList';
 
 interface PostProps {
-    frontmatterSorted: Frontmatter[];
-    category: string;
+    frontmatterSorted: FrontmatterBlog[];
 }
 
-export function CategoryPage({ frontmatterSorted, category }: PostProps) {
+export function HomePage({ frontmatterSorted }: PostProps) {
     return (
         <>
             <Head>
-                <title>Ole Urfels | {category}</title>
+                <title>Document</title>
                 <meta
                     name='description'
                     content='Ole Urfels | Frontend Developer, Teacher, Writer'
@@ -21,7 +20,7 @@ export function CategoryPage({ frontmatterSorted, category }: PostProps) {
             <Layout noSidebar>
                 <div className='py-4'>
                     <h2 className='text-3xl font-bold text-gray-700 dark:text-white text-center'>
-                        {category}
+                        All Articles
                     </h2>
                 </div>
                 <BlogPostList frontmatter={frontmatterSorted} />

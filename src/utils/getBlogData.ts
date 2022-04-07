@@ -4,27 +4,24 @@ import { bundleMDX } from 'mdx-bundler';
 import { CategoriesUnion } from '#/src/types/types';
 import { initialState } from '#/src/store/NumberOfPostsContext';
 
-const blogDir = path.join(process.cwd(), 'src', 'markdown', 'blog');
-
-const files = fs.readdirSync(blogDir);
-
-export interface Frontmatter {
+export interface FrontmatterBlog {
     title: string;
     description: string;
-    group: string;
     category: CategoriesUnion;
     date: string;
     slug: string;
 }
 
-export async function getBlogData() {
+export async function getBlogData(folder: string) {
+    const blogDir = path.join(process.cwd(), 'src', 'markdown', folder);
+    const files = fs.readdirSync(blogDir);
     const numberOfPosts = initialState;
 
     const posts = await Promise.all(
         files.map(async (filename) => {
             const markdownWithMeta = fs.readFileSync(path.join(blogDir, filename), 'utf-8');
 
-            const result = await bundleMDX<Frontmatter>({ source: markdownWithMeta });
+            const result = await bundleMDX<FrontmatterBlog>({ source: markdownWithMeta });
             result.frontmatter.date = new Date(result.frontmatter.date).toISOString();
 
             const category = result.frontmatter.category;

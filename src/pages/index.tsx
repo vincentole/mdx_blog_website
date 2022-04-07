@@ -1,11 +1,11 @@
-import { HomePage } from '#/src/components/HomePage/HomePage';
-import { Frontmatter, getBlogData } from '#/src/utils/getBlogData';
+import { HomePage } from '#/src/components/Pages/HomePage/HomePage';
+import { FrontmatterBlog, getBlogData } from '#/src/utils/getBlogData';
 import { NumberOfPostsContext } from '#/src/store/NumberOfPostsContext';
 import { NumberOfPosts } from '#/src/types/types';
 
 interface PostProps {
     numberOfPosts: NumberOfPosts;
-    frontmatterSorted: Frontmatter[];
+    frontmatterSorted: FrontmatterBlog[];
 }
 
 export default function IndexPage({ numberOfPosts, frontmatterSorted }: PostProps) {
@@ -17,7 +17,7 @@ export default function IndexPage({ numberOfPosts, frontmatterSorted }: PostProp
 }
 
 export const getStaticProps = async () => {
-    const { numberOfPosts, posts } = await getBlogData();
+    const { numberOfPosts, posts } = await getBlogData('blog');
 
     const frontmatterSorted = posts
         .map((post) => post.frontmatter)

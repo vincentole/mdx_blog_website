@@ -8,6 +8,7 @@ import { Fade as MenuBtn } from 'hamburger-react';
 import { RiGithubFill as GitHub } from 'react-icons/ri';
 import { RiMoonClearFill as Moon } from 'react-icons/ri';
 import { RiSunLine as Sun } from 'react-icons/ri';
+import { RiLinkedinFill as LinkedIn } from 'react-icons/ri';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -28,7 +29,7 @@ export default function Header({ children, mainMenuController }: LayoutProps) {
     }, []);
 
     return (
-        <header className='flex items-center border-b h-16 border-gray-300 dark:border-gray-800 text-gray-700 dark:text-white'>
+        <header className='flex items-center h-16 shadow-sm border-primary'>
             <div className='cContainer flex items-center w-full'>
                 <div className='lg:hidden'>
                     {mounted && (
@@ -49,20 +50,29 @@ export default function Header({ children, mainMenuController }: LayoutProps) {
                 <div className='flex gap-2'>
                     <Button
                         as='a'
+                        href='https://www.linkedin.com/in/ole-urfels/'
+                        newTab
+                        className='w-9 h-9 px-0'
+                    >
+                        <LinkedIn className='w-6 h-6' />
+                    </Button>
+                    <Button
+                        as='a'
                         href='https://github.com/vincentole/'
                         newTab
                         className='w-9 h-9 px-0'
                     >
                         <GitHub className='w-7 h-7' />
                     </Button>
-                    <Button as='button' className='w-9 h-9 px-0' onClick={toggleTheme}>
+                    {/* TODO: Dark theme design */}
+                    {/* <Button as='button' className='w-9 h-9 px-0' onClick={toggleTheme}>
                         {mounted &&
                             (isLightTheme ? (
-                                <Moon className='w-4 h-4' />
+                                <Moon className='w-5 h-5' />
                             ) : (
-                                <Sun className='w-4 h-4' />
+                                <Sun className='w-5 h-5' />
                             ))}
-                    </Button>
+                    </Button> */}
                 </div>
             </div>
         </header>
