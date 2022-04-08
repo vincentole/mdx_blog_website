@@ -8,7 +8,7 @@ import { NumberOfPostsContext } from '#/src/store/NumberOfPostsContext';
 import { categoryToSlug } from '#/src/utils/transformCategory';
 import ArticleHeader from '#/src/components/shared/ArticleHeader';
 import Prose from '#/src/components/shared/Prose';
-import Giscus from '@giscus/react';
+import Comments from '#/src/components/shared/Comments';
 
 interface PostProps {
     numberOfPosts: NumberOfPosts;
@@ -31,26 +31,7 @@ export default function Post({ numberOfPosts, post }: PostProps) {
                         <MDXContent />
                     </Prose>
                 </article>
-                <section className='article'>
-                    <div className='max-w-prose mx-auto'>
-                        <p className='pb-4'>
-                            This blog uses static site generation. Therefore, comments or reactions
-                            may not be visible immediately.
-                        </p>
-                        <Giscus
-                            repo='vincentole/personal_website'
-                            repoId='R_kgDOHGWZGw'
-                            category='Announcements'
-                            categoryId='DIC_kwDOHGWZG84COeLW'
-                            mapping='pathname'
-                            reactionsEnabled='1'
-                            emitMetadata='0'
-                            inputPosition='top'
-                            theme='light'
-                            lang='en'
-                        />
-                    </div>
-                </section>
+                <Comments />
             </Layout>
         </NumberOfPostsContext.Provider>
     );

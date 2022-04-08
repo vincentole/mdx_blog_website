@@ -8,6 +8,7 @@ import { NumberOfPostsContext } from '#/src/store/NumberOfPostsContext';
 import ArticleHeader from '#/src/components/shared/ArticleHeader';
 import { FrontmatterSinglePage, getStaticPageData } from '#/src/utils/getStaticPageData';
 import Prose from '#/src/components/shared/Prose';
+import Comments from '#/src/components/shared/Comments';
 
 interface PostProps {
     numberOfPosts: NumberOfPosts;
@@ -31,6 +32,7 @@ export default function Post({ numberOfPosts, post, singlePagePostsData }: PostP
                         <MDXContent />
                     </Prose>
                 </article>
+                <Comments />
             </Layout>
         </NumberOfPostsContext.Provider>
     );
@@ -72,5 +74,8 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     }
     const { code, frontmatter } = post;
 
-    return { props: { numberOfPosts, post: { code, frontmatter }, singlePagePostsData } };
+    return {
+        props: { numberOfPosts, post: { code, frontmatter }, singlePagePostsData },
+        revalidate: 1,
+    };
 }
