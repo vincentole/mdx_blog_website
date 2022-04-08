@@ -17,7 +17,7 @@ export default function BlogPostList({ frontmatter }: BlogPostListProps) {
                         date={item.date}
                         title={item.title}
                         category={item.category}
-                        description={item.category}
+                        description={item.description}
                         slug={item.slug}
                     />
                 </li>

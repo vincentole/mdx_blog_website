@@ -57,7 +57,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     if (contextCategory === 'devblog') {
         const frontmatterSorted = posts
             .map((post) => post.frontmatter)
-            .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+            .sort((a, b) => -(new Date(a.date).getTime() - new Date(b.date).getTime()));
 
         return { props: { numberOfPosts, frontmatterSorted, category: 'DevBlog' } };
     } else {
