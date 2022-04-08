@@ -27,11 +27,7 @@ export default function Layout({ children, noSidebar }: LayoutProps) {
         <AppShell
             navbarBreakpoint='sm'
             asideBreakpoint='sm'
-            header={
-                <Header mainMenuController={mainMenuController}>
-                    <Logo />
-                </Header>
-            }
+            header={<Header mainMenuController={mainMenuController} />}
             navbar={<NavMain mainMenuController={mainMenuController} />}
             aside={noSidebar ? undefined : <SidebarToc />}
             footer={<Footer />}
