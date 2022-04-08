@@ -26,7 +26,7 @@ export default function WhoAmISection() {
                         and scaling is virtually limitless.
                     </p>
                     <p>
-                        I get exciting to break new ground and move the world ahead with modern
+                        I get excited to break new ground and move the world ahead with modern
                         technology.
                     </p>
                     <p>
