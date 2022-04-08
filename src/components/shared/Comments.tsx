@@ -12,7 +12,8 @@ export default function Comments() {
                     >
                         Incremental Static Regeneration
                     </a>
-                    . Therefore, comments or reactions may not be visible immediately.
+                    . Therefore, comments or reactions may not be visible immediately or only after
+                    the reload.
                 </p>
                 <Giscus
                     repo='vincentole/personal_website'
