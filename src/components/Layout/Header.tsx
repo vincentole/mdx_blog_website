@@ -3,19 +3,18 @@ import { useEffect, useState } from 'react';
 import colors from 'tailwindcss/colors';
 import { MainMenuController } from '#/src/components/Layout/Layout';
 import Button from '#/src/components/shared/ButtonDefault';
+import Logo from '#/src/components/shared/Logo';
 
 import { Fade as MenuBtn } from 'hamburger-react';
 import { RiGithubFill as GitHub } from 'react-icons/ri';
-import { RiMoonClearFill as Moon } from 'react-icons/ri';
-import { RiSunLine as Sun } from 'react-icons/ri';
 import { RiLinkedinFill as LinkedIn } from 'react-icons/ri';
+import Link from 'next/link';
 
 interface LayoutProps {
-    children: React.ReactNode;
     mainMenuController: MainMenuController;
 }
 
-export default function Header({ children, mainMenuController }: LayoutProps) {
+export default function Header({ mainMenuController }: LayoutProps) {
     const [mounted, setMounted] = useState(false);
     const { resolvedTheme, setTheme } = useTheme();
     const isLightTheme = resolvedTheme === 'light';
@@ -43,9 +42,13 @@ export default function Header({ children, mainMenuController }: LayoutProps) {
                         />
                     )}
                 </div>
-                <div className='flex items-center gap-4 grow justify-center lg:justify-start'>
-                    <div>{children}</div>
-                    <div>Ole Urfels</div>
+                <div className='grow'>
+                    <Link href='/'>
+                        <a className='flex items-center gap-4 justify-center lg:justify-start'>
+                            <Logo />
+                            <span>Ole Urfels</span>
+                        </a>
+                    </Link>
                 </div>
                 <div className='flex gap-2'>
                     <Button

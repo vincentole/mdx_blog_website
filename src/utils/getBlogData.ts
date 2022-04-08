@@ -15,7 +15,7 @@ export interface FrontmatterBlog {
 export async function getBlogData(folder: string) {
     const blogDir = path.join(process.cwd(), 'src', 'markdown', folder);
     const files = fs.readdirSync(blogDir);
-    const numberOfPosts = initialState;
+    const numberOfPosts = { ...initialState };
 
     const posts = await Promise.all(
         files.map(async (filename) => {
@@ -26,7 +26,7 @@ export async function getBlogData(folder: string) {
 
             const category = result.frontmatter.category;
 
-            numberOfPosts[category] = numberOfPosts[category] ? (numberOfPosts[category]! += 1) : 1;
+            numberOfPosts[category] = numberOfPosts[category] ? (numberOfPosts[category] += 1) : 1;
             numberOfPosts['DevBlog'] = numberOfPosts['DevBlog']
                 ? (numberOfPosts['DevBlog'] += 1)
                 : 1;

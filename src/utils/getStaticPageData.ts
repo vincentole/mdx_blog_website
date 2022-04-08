@@ -1,8 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import { bundleMDX } from 'mdx-bundler';
-import { CategoriesUnion } from '#/src/types/types';
-import { initialState } from '#/src/store/NumberOfPostsContext';
 
 export interface FrontmatterSinglePage {
     title: string;
