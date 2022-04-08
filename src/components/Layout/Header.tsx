@@ -44,9 +44,10 @@ export default function Header({ mainMenuController }: LayoutProps) {
                 </div>
                 <div className='grow'>
                     <Link href='/'>
-                        <a className='flex items-center gap-4 justify-center lg:justify-start'>
+                        <a className='flex items-center gap-2 justify-center lg:justify-start'>
                             <Logo />
-                            <span>Ole Urfels</span>
+                            <span className='text-2xl'>Ole Urfels</span>
+                            <span className='text-lg hidden xs:inline'> (vincentole)</span>
                         </a>
                     </Link>
                 </div>
