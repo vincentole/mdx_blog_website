@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Layout from '#/src/components/Layout/Layout';
 import { FrontmatterBlog } from '#/src/utils/getBlogData';
 import BlogPostList from '#/src/components/shared/BlogPostList';
+import PageHeader from '#/src/components/shared/PageHeader';
 
 interface PostProps {
     frontmatterSorted: FrontmatterBlog[];
@@ -18,11 +19,7 @@ export function HomePage({ frontmatterSorted }: PostProps) {
                 />
             </Head>
             <Layout noSidebar>
-                <div className='py-4'>
-                    <h2 className='text-3xl font-bold text-gray-700 dark:text-white text-center'>
-                        All Articles
-                    </h2>
-                </div>
+                <PageHeader heading='DevBlog' />
                 <BlogPostList frontmatter={frontmatterSorted} />
             </Layout>
         </>
