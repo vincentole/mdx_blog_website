@@ -29,7 +29,7 @@
     <a href="https://github.com/vincentole/mdx_blog_website"><strong>Explore the code »</strong></a>
     <br />
     <br />
-    <a href="https://rustica-coffee-website.vercel.app/">View Demo</a>
+    <a href="https://mdx-blog-website-chi-flame.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/vincentole/mdx_blog_website/issues">Report Bug</a>
   
@@ -73,26 +73,25 @@
 
 <br />
 
-Rustica Coffee Website is a website with an integrated store. The coffee shop is imaginary and the
-project was created for learning purposes. The website has a contact form integrated with formspree
-and formik, a random products section, a store subpage (among others), as well as an interactive
-shopping cart. In addition, the site is fully responsive and uses Next.js's integrated image
-optimization. The products' data is pulled from graphcms via their GraphQL API.
+MDX Blog Website is a statically generated blog. Blog posts can be grouped into categories
+accessible from the sidebar. It is also possible to add individual pages based on mdx and group them
+into categories. Each individual page shows linked tags of the other pages within its category for
+easier access. In addition to Markdown pages, there are three other sections: Who Am I, Portfolio
+and Contact, which offer the possibility to display additional author information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
+type script tailwind react next mdx bundler mdx gray matter
+
 -   [TypeScript](https://www.typescriptlang.org/)
 -   [Next.js](https://nextjs.org/)
 -   [React.js](https://reactjs.org/)
--   [Redux](https://redux.js.org/)
--   [Redux Toolkit](https://redux-toolkit.js.org/)
 -   [TailwindCSS](https://tailwindcss.com/)
--   [headlessUI](https://headlessui.dev/)
--   [Formik](https://formik.org/)
--   [Formspree](https://formspree.io/)
--   [GraphQL](https://graphql.org/) via [graphcms](https://graphcms.com/)
+-   [MDX](https://mdxjs.com/)
+-   [MDX Bundler](https://github.com/kentcdodds/mdx-bundler)
+-   [Gray Matter](https://github.com/jonschlinkert/gray-matter)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -100,67 +99,120 @@ optimization. The products' data is pulled from graphcms via their GraphQL API.
 
 ### What I Learned
 
-I present to you my first major project using Next.js and form integration.
-
 In this section, I highlight a few code snippets that I find valuable. Please refer to the
 [section below](#roadmap--continued-development) for more concepts and features I implemented.
 
-#### Animation
+#### Get Blog Data (markdown, metadata, category count)
 
-Animating a component once based on a dependency, here `amountCartItems`.
+This function is the core logic of the blog. First, the frontmatter metadata interface is defined
+according to the metadata used in the actual `.mdx` file. In the function, I set the path to the
+folder that contains the blog entries, where the last `folder` name can be adjusted as needed via
+the function argument. Then I initialize the `numberOfPosts` as an object containing all categories
+and the value 0 as a field value. Since the map function is asynchronous, I use `Promise.all()` to
+await all promises. Inside the map function, I return the output code and metadata output using
+mdx-bundler and simulatively increment the number of blog entries within the specified category.
+Note: The date is reformatted to an ISO string because of a type error.
 
-```tsx
-// ... //
-const [animate, setAnimate] = useState(false);
-
-useEffect(() => {
-    setAnimate(true);
-    // timing should be equivalent to animation timing
-    const timeout = setTimeout(() => setAnimate(false), 350);
-    return () => clearTimeout(timeout);
-}, [amountCartItems]);
-
-return (
-    <button
-        // ... //
-        className={` ${className} ${animate && 'animate-pop-once'}`}
-    >
-        {/* ... */}
-    </button>
-);
-```
-
-#### Typescript
-
-Using discriminating unions to specify mandatory types based on the button type.
+The final output is an object with `numberOfPosts` containing the number of posts per category and
+the object `posts` containing the code and metadata of each post.
 
 ```ts
-type PropsLink = {
-    label: string;
-    secondary?: boolean;
+import fs from 'fs';
+import path from 'path';
+import { bundleMDX } from 'mdx-bundler';
+import { CategoriesUnion } from '#/src/types/types';
+import { initialState } from '#/src/store/NumberOfPostsContext';
 
-    type: 'link';
-    href: string;
+export interface FrontmatterBlog {
+    title: string;
+    description: string;
+    category: CategoriesUnion;
+    date: string;
+    slug: string;
+}
+
+export async function getBlogData(folder: string) {
+    const blogDir = path.join(process.cwd(), 'src', 'markdown', folder);
+    const files = fs.readdirSync(blogDir);
+    const numberOfPosts = { ...initialState };
+
+    const posts = await Promise.all(
+        files.map(async (filename) => {
+            const markdownWithMeta = fs.readFileSync(path.join(blogDir, filename), 'utf-8');
+
+            const result = await bundleMDX<FrontmatterBlog>({ source: markdownWithMeta });
+            result.frontmatter.date = new Date(result.frontmatter.date).toISOString();
+
+            const category = result.frontmatter.category;
+
+            numberOfPosts[category] = numberOfPosts[category] ? (numberOfPosts[category] += 1) : 1;
+            numberOfPosts['DevBlog'] = numberOfPosts['DevBlog']
+                ? (numberOfPosts['DevBlog'] += 1)
+                : 1;
+
+            return result;
+        }),
+    );
+
+    return { numberOfPosts, posts };
+}
+```
+
+This is an example of the `NumberOfPosts` used for the `numberOfPosts` object for reference:
+
+```ts
+type NumberOfPosts = {
+    Algorithms: number;
+    'React.js': number;
+    'Next.js': number;
 };
+```
 
-type PropsAnchor = {
-    label: string;
-    secondary?: boolean;
+#### Generating Blog Post Lists
 
-    type: 'anchor';
-    anchorId: string;
-};
+With `getStaticProps` data can be passed to statically generated pages. Here I get the blog data
+from the function `getBlogData`, which I showed in more detail above. I then use type guards to make
+sure I have a category slug with a string type, otherwise a 404 page is returned. Next, the category
+slug is converted to the into the actual category name, and again type-checking is required to
+ensure that this category exists. Finally, I either return the metadata for all posts if the
+category `devblog` was chosen, or I only return the metadata for the appropriate category. All posts
+are sorted by date, with new posts first. To understand this, notice the `-(...)` around
+`new Date(a.date).getTime() - new Date(b.date).getTime()`.
 
-type PropsButton = {
-    secondary?: boolean;
+```ts
+export async function getStaticProps(context: GetStaticPropsContext) {
+    const { numberOfPosts, posts } = await getBlogData('blog');
 
-    type: 'button';
-    btnType: 'button' | 'submit' | 'reset';
-    disabled?: boolean;
-    onClick?: () => void;
-};
+    if (!context.params || !context.params.category || Array.isArray(context.params.category)) {
+        return {
+            notFound: true,
+        };
+    }
 
-type Props = PropsLink | PropsAnchor | PropsButton;
+    const contextCategory = context.params.category;
+    const category = categorySlugToCategory(contextCategory);
+
+    if (!category) {
+        return {
+            notFound: true,
+        };
+    }
+
+    if (contextCategory === 'devblog') {
+        const frontmatterSorted = posts
+            .map((post) => post.frontmatter)
+            .sort((a, b) => -(new Date(a.date).getTime() - new Date(b.date).getTime()));
+
+        return { props: { numberOfPosts, frontmatterSorted, category: 'DevBlog' } };
+    } else {
+        const frontmatterSorted = posts
+            .map((post) => post.frontmatter)
+            .filter((post) => categoryToSlug(post.category) === contextCategory)
+            .sort((a, b) => -(new Date(a.date).getTime() - new Date(b.date).getTime()));
+
+        return { props: { numberOfPosts, frontmatterSorted, category } };
+    }
+}
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -170,30 +222,14 @@ type Props = PropsLink | PropsAnchor | PropsButton;
 ### Roadmap & Continued Development
 
 -   [x] TypeScript
-    -   [x] Reusable types
-    -   [x] Generic types
-    -   [x] Discriminating unions
 -   [x] Reusable components
 -   [x] Dynamic routes
--   [x] API routes
--   [x] Animations
 -   [x] Transitions
--   [x] Interactive cart
-    -   [x] Dynamic product amount
-    -   [x] Add items from shop subpage
-    -   [x] Add further items from within cart overlay (set to amount++)
-    -   [x] Remove items from within cart overlay (set to amount--)
-    -   [x] Remove complete product (set amount = 0)
-    -   [x] Show number of products added since last opened cart overlay
-    -   [x] Show product total
-    -   [x] Show cart total
--   [x] Shop subpage
-    -   [x] Add different variants of the product via a form
-    -   [x] Get product data dynamically
--   [x] Contact Form
-    -   [x] Error handling and frontend validation
-    -   [x] Hidden API Key via Next.js's API Route
--   [x] Fetch data from external DB with GraphQL
+-   [x] Responsive sidebar
+-   [x] Number of blog posts by category
+-   [x] Blog post pages via mdx
+-   [x] Single pages via mdx
+-   [x] Show links to other single pages of the same category
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -205,39 +241,13 @@ To get a local copy up and running follow these steps.
 
 ### Installation
 
-1.  Get a free formspree API Key at [https://formspree.io/](https://formspree.io/)
-2.  Setup a project for free at [graphcms](https://graphcms.com/) and create a schema according to
-    the `shopItemDetailsType.ts`:
-
-    ```ts
-    type ShopItemDetailsType = {
-        id: string;
-        slug: string;
-        title: string;
-        allPrices: number[];
-        aroma: string;
-        cookingUtilities: string[];
-        allVariants: string[];
-        allWeights: number[];
-        summary: string;
-        description: string;
-        readyForDelivery: boolean;
-        image: { url: string };
-    };
-
-    export default ShopItemDetailsType;
-    ```
-
-    Note that images provided by _graphcms_ will automatically have a `url` field. Then generate a
-    _Permanent Auth Token_.
-
-3.  Clone the repo <br/>
+1.  Clone the repo <br/>
 
         ```sh
         git clone https://github.com/vincentole/mdx_blog_website.git
         ```
 
-4.  Install packages <br/>
+2.  Install packages <br/>
 
     npm
 
@@ -249,13 +259,6 @@ To get a local copy up and running follow these steps.
 
     ```sh
     yarn
-    ```
-
-5.  Enter your API keys in `.env.local` <br/>
-
-    ```js
-    FORMSPREE_POST_API= Enter Your API KEY HERE
-    GRAPHQL_CMS_ACCESS_TOKEN=FORMSPREE_POST_API = Enter Your API KEY HERE
     ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -305,8 +308,6 @@ Project Link:
 <!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
-
--   [opencampus.sh](https://www.opencampus.sh/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
