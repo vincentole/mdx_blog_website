@@ -97,7 +97,7 @@ type script tailwind react next mdx bundler mdx gray matter
 
 <!-- What I learned -->
 
-### What I Learned
+### Highlights of What I Learned
 
 In this section, I highlight a few code snippets that I find valuable. Please refer to the
 [section below](#roadmap--continued-development) for more concepts and features I implemented.
