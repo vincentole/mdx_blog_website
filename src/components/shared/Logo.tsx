@@ -1,4 +1,4 @@
-import { AiFillCode as LogoIcon } from 'react-icons/ai';
+import { GiFireDash as LogoIcon } from 'react-icons/gi';
 
 export default function Logo() {
     return (

@@ -29,7 +29,7 @@ export default function Header({ mainMenuController }: LayoutProps) {
 
     return (
         <header className='flex items-center h-16 shadow-sm border-primary'>
-            <div className='cContainer flex items-center w-full'>
+            <div className='cContainer px-10 flex items-center w-full'>
                 <div className='lg:hidden'>
                     {mounted && (
                         <MenuBtn
