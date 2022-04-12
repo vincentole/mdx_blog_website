@@ -158,7 +158,7 @@ export async function getBlogData(folder: string) {
 }
 ```
 
-This is an example of the `NumberOfPosts` used for the `numberOfPosts` object for reference:
+This is an example of the `NumberOfPosts` type used for the `numberOfPosts` object for reference:
 
 ```ts
 type NumberOfPosts = {
