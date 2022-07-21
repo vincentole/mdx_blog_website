@@ -1,0 +1,19 @@
+[13:31:12.710] Global cache location '/home/ole/.cache/typescript/4.6', safe file path '/home/ole/Documents/GitHub/mdx_blog_website/node_modules/typescript/lib/typingSafeList.json', types map path /home/ole/Documents/GitHub/mdx_blog_website/node_modules/typescript/lib/typesMap.json
+[13:31:12.710] Processing cache location '/home/ole/.cache/typescript/4.6'
+[13:31:12.710] Trying to find '/home/ole/.cache/typescript/4.6/package.json'...
+[13:31:12.711] Loaded content of '/home/ole/.cache/typescript/4.6/package.json': {"private":true,"dependencies":{"types-registry":"^0.1.588"}}
+[13:31:12.711] Loaded content of '/home/ole/.cache/typescript/4.6/package-lock.json'
+[13:31:12.711] Finished processing cache location '/home/ole/.cache/typescript/4.6'
+[13:31:12.711] Process id: 60690
+[13:31:12.711] NPM location: /usr/local/bin/npm (explicit '--npmLocation' not  provided)
+[13:31:12.711] validateDefaultNpmLocation: false
+[13:31:12.711] Npm config file: /home/ole/.cache/typescript/4.6/package.json
+[13:31:12.711] Updating types-registry npm package...
+[13:31:12.711] Exec: /usr/local/bin/npm install --ignore-scripts types-registry@latest
+[13:31:13.387]     Succeeded. stdout:
+    
+    up to date, audited 2 packages in 584ms
+
+found 0 vulnerabilities
+
+[13:31:13.388] Updated types-registry npm package

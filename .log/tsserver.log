@@ -1,0 +1,113 @@
+Info 0    [13:31:12.577] Starting TS Server
+Info 1    [13:31:12.578] Version: 4.6.3
+Info 2    [13:31:12.578] Arguments: /usr/local/bin/node /home/ole/Documents/GitHub/mdx_blog_website/node_modules/typescript/lib/tsserver.js --logFile /home/ole/Documents/GitHub/mdx_blog_website/.log/tsserver.log --logVerbosity info --cancellationPipeName /tmp/386b226641461500b5c4c0f03a7f93a2/tscancellation*
+Info 3    [13:31:12.578] Platform: linux NodeVersion: 16 CaseSensitive: true
+Info 4    [13:31:12.578] ServerMode: undefined syntaxOnly: false hasUnknownServerMode: undefined
+Info 5    [13:31:12.587] Format host information updated
+Info 6    [13:31:12.592] Search path: /home/ole/Documents/GitHub/mdx_blog_website/src/pages
+Info 7    [13:31:12.592] For info: /home/ole/Documents/GitHub/mdx_blog_website/src/pages/index.tsx :: Config file name: /home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json
+Info 8    [13:31:12.592] Creating configuration project /home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json
+Info 9    [13:31:12.613] Config: /home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json : {
+ "rootNames": [
+  "/home/ole/Documents/GitHub/mdx_blog_website/next-env.d.ts",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/settings/settings.ts",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/types/types.ts",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/utils/getBlogData.ts",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/utils/getStaticPageData.ts",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/utils/transformCategory.ts",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Footer.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Header.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Layout.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/NavMain.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/SidebarToc.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/AppShell/AppShell.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Navbar/NabbarItem.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Navbar/Navbar.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Navbar/NavbarSection.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Navbar/NavbarSeparator.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Sidebar/Sidebar.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Sidebar/SidebarItem.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Sidebar/SidebarItemSub.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Sidebar/SidebarNav.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Sidebar/SidebarSection.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Layout/Sidebar/SidebarSeparator.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Pages/CategoryPage/CategoryPage.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Pages/ContactPage/ContactPage.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Pages/ContactPage/ContactSection.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Pages/HomePage/HomePage.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Pages/PortfolioPage/PortfolioPage.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Pages/PortfolioPage/PortfolioProject.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Pages/WhoAmIPage/WhoAmIPage.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Pages/WhoAmIPage/WhoAmISection.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/Resources/Resources.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/ArticleCard.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/ArticleCardEmpty.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/ArticleHeader.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/BlogPostList.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/ButtonDefault.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/Comments.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/CounterChip.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/ExternalLink.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/FooterLink.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/Logo.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/PageHeader.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/components/shared/Prose.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/_app.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/_document.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/contact.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/index.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/portfolio.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/who-am-i.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/blog/[category]/[slug].tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/blog/[category]/index.tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/legal/[slug].tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/resources/[slug].tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/roadmap/[slug].tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/pages/stack/[slug].tsx",
+  "/home/ole/Documents/GitHub/mdx_blog_website/src/store/NumberOfPostsContext.tsx"
+ ],
+ "options": {
+  "target": 1,
+  "lib": [
+   "lib.dom.d.ts",
+   "lib.dom.iterable.d.ts",
+   "lib.esnext.d.ts"
+  ],
+  "allowJs": true,
+  "skipLibCheck": true,
+  "strict": true,
+  "forceConsistentCasingInFileNames": true,
+  "noEmit": true,
+  "esModuleInterop": true,
+  "module": 99,
+  "moduleResolution": 2,
+  "resolveJsonModule": true,
+  "isolatedModules": true,
+  "jsx": 1,
+  "incremental": true,
+  "baseUrl": "/home/ole/Documents/GitHub/mdx_blog_website",
+  "paths": {
+   "#/*": [
+    "./*"
+   ]
+  },
+  "pathsBasePath": "/home/ole/Documents/GitHub/mdx_blog_website",
+  "configFilePath": "/home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json"
+ }
+}
+Info 10   [13:31:12.706] Starting updateGraphWorker: Project: /home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json
+Info 11   [13:31:14.094] Finishing updateGraphWorker: Project: /home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 1387.8058139998466ms
+Info 12   [13:31:14.094] Project '/home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json' (Configured)
+Info 13   [13:31:14.094] 	Files (409)
+
+Info 14   [13:31:14.094] -----------------------------------------------
+Info 15   [13:31:14.104] AutoImportProviderProject: found 1 root files in 1 dependencies in 7.312362998723984 ms
+Info 16   [13:31:14.104] Starting updateGraphWorker: Project: /dev/null/autoImportProviderProject1*
+Info 17   [13:31:14.109] Finishing updateGraphWorker: Project: /dev/null/autoImportProviderProject1* Version: 1 structureChanged: true structureIsReused:: Not Elapsed: 4.5474650003015995ms
+Info 18   [13:31:14.109] Project '/dev/null/autoImportProviderProject1*' (AutoImportProvider)
+Info 19   [13:31:14.109] 	Files (9)
+
+Info 20   [13:31:14.109] -----------------------------------------------
+Info 21   [13:31:15.145] DirectoryWatcher:: Triggered with /home/ole/Documents/GitHub/mdx_blog_website/.log/ti-60682.log 0:: WatchInfo: /home/ole/Documents/GitHub/mdx_blog_website 1 undefined Config: /home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json WatchType: Wild card directory
+Info 22   [13:31:15.145] Project: /home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json Detected file add/remove of non supported extension: /home/ole/Documents/GitHub/mdx_blog_website/.log/ti-60682.log
+Info 23   [13:31:15.146] Elapsed:: 0.46884999983012676ms DirectoryWatcher:: Triggered with /home/ole/Documents/GitHub/mdx_blog_website/.log/ti-60682.log 0:: WatchInfo: /home/ole/Documents/GitHub/mdx_blog_website 1 undefined Config: /home/ole/Documents/GitHub/mdx_blog_website/tsconfig.json WatchType: Wild card directory
